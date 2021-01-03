@@ -1,2 +1,2 @@
-instance-id: ubuntu
-local-hostname: ubuntu
+instance-id: cloud-init-example-host
+local-hostname: cloud-init-example-host
