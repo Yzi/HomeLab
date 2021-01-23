@@ -1,0 +1,13 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: home-assistant
+  namespace: kube-system
+spec:
+  chart: home-assistant
+  repo: https://k8s-at-home.com/charts/
+  valuesContent: |-
+    hostNetwork: true
+    extraEnv:
+      TZ: Asia/Shanghai
