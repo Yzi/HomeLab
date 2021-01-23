@@ -1,0 +1,38 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:v2.24.1
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - '9090:9090'
+
+  black-exporter:
+    image: prom/blackbox-exporter:v0.18.0
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./blackbox.yml:/config/blackbox.yml
+    command:
+      - '--config.file=/config/blackbox.yml'
+    ports:
+      - '9115:9115'
+
+  grafana:
+    image: grafana/grafana:7.3.7
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    depends_on:
+      - prometheus
+    ports:
+      - '3000:3000'
+
+volumes:
+  grafana_data: {}
+  prometheus_data: {}
