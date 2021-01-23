@@ -6,6 +6,7 @@ scrape_configs:
     static_configs:
       - targets:
         - http://www.gstatic.com/generate_204    # Target to probe with http.
+        - http://connect.rom.miui.com/generate_204    # Target to probe with http.
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
