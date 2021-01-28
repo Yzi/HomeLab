@@ -1,1 +1,0 @@
-sudo kubectl rollout restart deployment home-assistant -n kube-system
