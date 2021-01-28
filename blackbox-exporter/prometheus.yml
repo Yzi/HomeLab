@@ -5,7 +5,7 @@ scrape_configs:
       module: [http_2xx]  # Look for a HTTP 200 response.
     static_configs:
       - targets:
-        - http://connectivitycheck.gstatic.com/generate_204    # Target to probe with http.
+        - http://connectivitycheck.hk.yzi.io/generate_204    # Target to probe with http.
         - http://connectivitycheck.platform.hicloud.com/generate_204    # Target to probe with http.
     relabel_configs:
       - source_labels: [__address__]
