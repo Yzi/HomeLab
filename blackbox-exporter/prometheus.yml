@@ -1,4 +1,9 @@
 scrape_configs:
+  - job_name: 'haproxy'
+    static_configs:
+      - targets: 
+        -'http://hk.yzi.io:8404'
+
   - job_name: 'blackbox'
     metrics_path: /probe
     params:
@@ -6,7 +11,6 @@ scrape_configs:
     static_configs:
       - targets:
         - http://connectivitycheck.hk.yzi.io/generate_204    # Target to probe with http.
-        - http://connectivitycheck.platform.hicloud.com/generate_204    # Target to probe with http.
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
