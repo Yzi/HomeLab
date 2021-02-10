@@ -1,16 +1,11 @@
 scrape_configs:
-  - job_name: 'haproxy'
-    static_configs:
-      - targets: 
-        - hk.yzi.io:8404
-
   - job_name: 'blackbox'
     metrics_path: /probe
     params:
       module: [http_2xx]  # Look for a HTTP 200 response.
     static_configs:
       - targets:
-        - http://connectivitycheck.hk.yzi.io/generate_204    # Target to probe with http.
+        - http://connectivitycheck.gstatic.com/generate_204    # Target to probe with http.
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
